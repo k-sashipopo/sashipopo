@@ -1,0 +1,14 @@
+class CreateGenres < ActiveRecord::Migration[6.1]
+  def change
+    create_table :genres do |t|
+
+      t.timestamps
+      
+      #↓手動で追加↓#
+      t.string :name
+      #↑手動で追加↑#
+      
+
+    end
+  end
+end
