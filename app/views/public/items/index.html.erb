@@ -14,7 +14,13 @@
         <% @items.each do |item| %>
           <div class="m-3">
           <%= link_to item_path(item) do %>
-            <%= image_tag item.image, size:'200x150' %><br>
+          
+              <% if item.image.present? %>
+                <%= image_tag item.image, size: '200x150' %><br>
+              <% else %>
+                <p>画像がありません</p>
+              <% end %>
+
             <p><%= item.name %></p>
             <p>¥<%= (item.tax_free_price*1.1).floor.to_s(:delimited) %>(税込)</p>
           <% end %>
@@ -24,7 +30,7 @@
       
       <div class="pagination justify-content-center my-3">
         <!--%= paginate @items_page, theme: 'bootstrap-5', link_icons: true %-->
-        <%= paginate @items_page %>
+        <%= paginate @items %>
       </div>
 
     </div>

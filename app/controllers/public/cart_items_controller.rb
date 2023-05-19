@@ -21,7 +21,19 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = current_customer.cart_items.new(cart_item_params)
+    #ユーザー登録ないとエラーになる↓
+    # @cart_item = current_customer.cart_items.new(cart_item_params) 
+    # @cart_item.save
+    # redirect_to cart_items_path
+    
+    if current_customer
+      @cart_item = current_customer.cart_items.new(cart_item_params)
+    else
+      @cart_item = CartItem.new(cart_item_params)
+    end
+    
+    @cart_item.save
+    redirect_to cart_items_path
   end
 
 

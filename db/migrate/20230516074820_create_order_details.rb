@@ -5,6 +5,8 @@ class CreateOrderDetails < ActiveRecord::Migration[6.1]
       t.timestamps
       
       #↓手動で追加↓#
+      t.integer :order_id
+      t.integer :item_id
       t.integer :buy_quantity
       t.integer :tax_in_price
       t.integer :work_status, default: 0

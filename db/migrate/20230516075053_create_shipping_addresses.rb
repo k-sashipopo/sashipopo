@@ -6,6 +6,7 @@ class CreateShippingAddresses < ActiveRecord::Migration[6.1]
       
       
       #↓手動で追加↓#
+      t.integer :customer_id
       t.string :name
       t.string :address
       t.string :postcode
