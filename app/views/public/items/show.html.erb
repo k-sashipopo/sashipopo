@@ -13,10 +13,12 @@
           <p><%= @item.intro %></p>
           <p>¥<%= (@item.tax_free_price*1.1).floor.to_s(:delimited) %>(税込)</p>
           
-          <!--%= f.hidden_field :item_id, value: @item.id %>-->
-          <!--%= f.label :count, ”個数選択” %>Show-->
-          <!--%= f.select :count, *[1..10] %>-->
-          <!--%= f.submit "カートに入れる", class: 'btn btn-outline-success' %>-->
+          <%= form_with model: @cart_item, url: @cart_item, method: :post do |f| %>
+            <%= f.hidden_field :item_id, value: @item.id %>
+            <!--%= f.label :count, ”個数選択” %-->
+            <%= f.select :count, *[1..10] %>
+            <%= f.submit "カートに入れる", class: 'btn btn-outline-success' %>
+          <% end %>
         </div>
       </div>
     </div>
