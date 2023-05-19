@@ -9,8 +9,8 @@ class Public::ItemsController < ApplicationController
     #@genres = Genre.all
     @cart_item = CartItem.new
   end
-  
-  
+
+
   private
   
   def item_params

@@ -1,9 +1,10 @@
 class CartItem < ApplicationRecord
   belongs_to :item
   belongs_to :customer
-  
+
+  # 小計を求めるメソッド
   def subtotal
-    item.tax_free_price * count
+    self.with_tax_price * count.to_s(:delimited)
   end
 
 #   def self.cart_items_total_price(cart_items)

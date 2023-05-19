@@ -11,7 +11,8 @@
           <%= image_tag @item.image, size:'400x300' %>
           <p><%= @item.name %></p>
           <p><%= @item.intro %></p>
-          <p>¥<%= (@item.tax_free_price*1.1).floor.to_s(:delimited) %>(税込)</p>
+          <p>¥<%= @item.with_tax_price %>(税込)</p>
+          <!--(@item.tax_free_price*1.1).floor.to_s(:delimited)-->
           
           <%= form_with model: @cart_item, url: cart_items_path, method: :post, class: 'align-items-end' do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>
