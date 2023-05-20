@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
 
 # 顧客用
-# URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
 # 管理者用
-# URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
@@ -16,33 +14,24 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   #会員側
 
     root to: 'public/homes#top'
-    # get 'homes/top'
 
     get '/about' => 'public/homes#about'
 
   scope module: :public do
-    resources :shipping_addresses, only: [:index, :new, :show, :edit]
-    # get 'shipping_addresses/index'
-    # get 'shipping_addresses/edit'
+    resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
 
-    get 'orders/completed' => 'orders#completed'
-    resources :orders, only: [:new, :index, :show]
-    # get 'orders/new'
-    # get 'orders/index'
-    # get 'orders/show'
+    post 'orders/confirm'
+    get 'orders/completed'
+    resources :orders, only: [:new, :create, :index, :show]
 
-    # resource
-    resource :cart_items, only: [:index]
-    # get 'cart_items/index'
+    delete 'cart_items/destroy_all', to: 'cart_items#destroy_all', as: 'destroy_all_cart_items'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
 
     get 'customers/confirm'
-    resources :customers, only: [:show, :edit,]
-    # get 'customers/show'
-    # get 'customers/edit'
+    patch 'customers/resign'
+    resources :customers, only: [:show, :edit, :update]
 
     resources :items, only: [:index, :show]
-    # get 'items/index'
-    # get 'items/show'
   end
 
 
@@ -50,25 +39,17 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   #管理者側
 
   namespace :admin do
-    get 'orders/show'
+    get 'homes/top'
 
-    resources :customers, only: [:index, :show, :edit]
-    # get 'customers/index'
-    # get 'customers/show'
-    # get 'customers/edit'
+    resources :orders, only: [:show, :update]
+    
+    patch 'order_details/update'
+
+    resources :customers, only: [:index, :show, :edit, :update]
 
     resources :genres, only: [:index, :create, :edit, :update]
-    # get 'genres/index'
-    # get 'genres/edit'
 
-    # ほんたろ、createとupdate追加
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    # get 'items/index'
-    # get 'items/new'
-    # get 'items/show'
-    # get 'items/edit'
 
-    get 'homes/top'
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

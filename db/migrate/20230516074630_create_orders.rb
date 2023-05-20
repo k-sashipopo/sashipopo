@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.timestamps
       
       #↓手動で追加↓#
+      t.integer :customer_id
       t.integer :total_price
       t.integer :pay_option, default: 0
       t.integer :status, default: 0
