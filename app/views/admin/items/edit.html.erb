@@ -24,7 +24,7 @@
 
           <div class="form-row">
             <div class="col-sm-4">ジャンル</div>
-              <div class="col-sm-8"><%= f.select :genre_id, options_from_collection_for_select(@genre, :id, :name), { include_blank: "選択してください" } %></div>
+              <div class="col-sm-8"><%= f.select :genre_id, options_from_collection_for_select(@genre, :id, :name, @item.genre_id), { include_blank: "選択してください" } %></div>
           </div>
 
           <div class="form-row">
