@@ -3,7 +3,14 @@
     <h4 class="p-3 mb-2 bg-light text-dark">商品一覧<h4>
   </div>
 
-  <table>
+  <div class="row justify-content-end">
+    <%= link_to new_admin_item_path do %>
+      <i class="fas fa-plus-circle"></i>
+    <% end %>
+  </div>
+
+   <div class="row">
+    <table class="table table-bordered">
     <thead>
       <tr>
         <th>商品ID</th>
@@ -31,5 +38,8 @@
       </tr>
     </tbody>
       <% end %>
-  </table>
-<%#= paginate items %>
+    </table>
+  <%#= paginate items %>
+  </div>
+</div>
+
