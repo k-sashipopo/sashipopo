@@ -14,14 +14,12 @@
         <% @items.each do |item| %>
           <div class="m-3">
           <%= link_to item_path(item) do %>
-          
-              <% if item.image.present? %>
-                <%= image_tag item.image, size: '200x150' %><br>
-              <% else %>
-                <p>画像がありません</p>
-              <% end %>
-
-            <p><%= item.name %></p>
+            <% if item.image.present? %>
+              <%= image_tag item.image, size: '200x150' %><br>
+            <% else %>
+              <p>画像がありません</p>
+            <% end %>
+            <p class="text-truncate"><%= item.name %></p>
             <p>¥<%= (item.tax_free_price*1.1).floor.to_s(:delimited) %>(税込)</p>
           <% end %>
           </div>
