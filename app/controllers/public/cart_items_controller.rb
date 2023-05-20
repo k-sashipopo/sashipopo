@@ -3,7 +3,7 @@ class Public::CartItemsController < ApplicationController
     #会員登録機能追加後に変更予定
     if current_customer
       @cart_items = current_customer.cart_items
-      @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
+      @total_price = current_customer.cart_items.calculate_total_price(@cart_items)
     else
       @cart_items = CartItem.all
       @total_price = calculate_total_price(@cart_items)
@@ -12,6 +12,12 @@ class Public::CartItemsController < ApplicationController
 
   def update
     @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      redirect_to cart_items_path
+    else
+      # 更新に失敗した場合の処理
+      redirect_to items_path
+    end
   end
 
   def destroy
@@ -50,11 +56,11 @@ class Public::CartItemsController < ApplicationController
   end
   
   # 合計金額のメソッド
-  def calculate_total_price(items)
+  def calculate_total_price(cart_items) #(customer)
     total_price = 0
-    items.each do |item|
-      total_price += item.subtotal
+    cart_items.each do |cart_item| #cutomer.後で追加する
+      total_price += cart_item.subtotal
     end
-    total_price
+    return total_price
   end
 end
