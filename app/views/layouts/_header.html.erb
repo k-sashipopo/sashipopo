@@ -11,31 +11,31 @@
           
       <% if admin_signed_in? %> <!--adminログイン状態の際に、表示したいheaderのメニューを記載-->
       <li>
-      <%= link_to admin_items_path,class: 'nav-link text-light' do %>
+      <%= link_to admin_items_path,class: 'nav-link text-secondary' do %>
       <i class="fas fa-birthday-cake"></i> 商品一覧
       <% end %>
       </li>
       
       <li>
-      <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
+      <%= link_to admin_customers_path,class: 'nav-link text-secondary' do %>
       <i class="fas fa-user-friends"></i> 会員一覧
       <% end %>
       </li>
       
       <li>
-      <%= link_to admin_orders_show_path,class: 'nav-link text-light' do %>
+      <%= link_to admin_orders_show_path,class: 'nav-link text-secondary' do %>
       <i class="fas fa-cart-plus"></i> 注文履歴一覧
       <% end %>
       </li>
       
       <li>
-      <%= link_to admin_genres_path,class: 'nav-link text-light' do %>
+      <%= link_to admin_genres_path,class: 'nav-link text-secondary' do %>
       <i class="fas fa-gifts"></i> ジャンル一覧
       <% end %>
       </li>
       
       <li>
-      <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+      <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-secondary' do %>
       <i class="fas fa-sign-out-alt"></i> ログアウト
       <% end %>
       </li>
@@ -45,25 +45,25 @@
       
       <% elsif customer_signed_in? %> <!--userログイン状態の際に、表示したいheaderのメニューを記載-->
       <li>
-      <%= link_to customer_path,class: 'nav-link text-light' do %>
+      <%= link_to customer_path(current_customer),class: 'nav-link text-secondary' do %>
       <i class="fab fa-pagelines"></i> My page
       <% end %>
       </li>
       
       <li>
-      <%= link_to items_path,class: 'nav-link text-light' do %>
+      <%= link_to items_path,class: 'nav-link text-secondary' do %>
       <i class="fas fa-birthday-cake"></i> Cakes
       <% end %>
       </li>
       
       <li>
-      <%= link_to orders_path,class: 'nav-link text-light' do %>
+      <%= link_to orders_path,class: 'nav-link text-secondary' do %>
       <i class="fas fa-shopping-cart"></i> Cart
       <% end %>
       </li>
       
       <li>
-      <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
+      <%= link_to destroy_customer_session_path, method: :delete, class: 'nav-link text-secondary' do %>
       <i class="fas fa-sign-out-alt"></i> Sign out
       <% end %>
       </li>
