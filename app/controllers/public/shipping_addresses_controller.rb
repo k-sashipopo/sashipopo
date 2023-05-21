@@ -1,13 +1,14 @@
 class Public::ShippingAddressesController < ApplicationController
   def index
-    #@customer = current_customer
+    customer = current_customer
     @shipping_address_new = ShippingAddress.new 
-    @shipping_addresses = ShippingAddress.all
+    @shipping_addresses = customer.shipping_addresses.all
   end
 
   def create
     @shipping_address_new = ShippingAddress.new(shipping_address_params)
-    if @shipping_address_new.save
+    if @shipping_address_new.customer_id = current_customer.id
+      @shipping_address_new.save
       redirect_to shipping_addresses_path
     else
       flash[:notice] = "入力に誤りがあります。"
