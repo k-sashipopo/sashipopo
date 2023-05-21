@@ -1,1 +1,19 @@
-<p>新着商品4件表示(public/homes/_newitems)</p>
+<div class="container-fluid">
+  <div class="row justify-content-center mt-3">
+    <h4 class="border-bottom border-dark">新着商品</h4>
+  </div>
+    
+  <div class="row justify-content-center mt-3 mt-3">
+    <div class="d-flex flex-wrap">
+      <% @items.each do |item| %>
+        <div class="m-3">
+        <%= link_to item_path(item) do %>
+          <%= image_tag item.image, size: '200x150' %><br>
+          <p class="text-truncate"><%= item.name %></p>
+          <p>¥<%= (item.tax_free_price*1.1).floor.to_s(:delimited) %>(税込)</p>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
