@@ -1,29 +1,79 @@
+<center>
+
 <h2>Sign up</h2>
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
+
+<!--名前を入力する-->
+ <div class="field">
+  <%= f.label :姓 %><br>
+  <%= f.text_field :first_name %>
+ </div>
+ 
+ <div class="field">
+  <%= f.label :名 %><br>
+  <%= f.text_field :last_name %>
+ </div>
+ 
+ <div class="field">
+  <%= f.label :カタカナ姓 %><br>
+  <%= f.text_field :kana_first_name %>
+ </div>
+ 
+ <div class="field">
+  <%= f.label :カタカナ名 %><br>
+  <%= f.text_field :kana_last_name %>
+ </div>
+
+<!--メールアドレス-->
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+<!--郵便番号-->
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :郵便番号 %><br />
+    <%= f.text_field :postcode %>
+  </div>
+  
+<!--住所-->
+  <div class="field">
+    <%= f.label :住所 %><br />
+    <%= f.text_field :address %>
+  </div>
+
+<!--電話番号-->
+  <div class="field">
+    <%= f.label :電話番号（ハイフンなし） %><br />
+    <%= f.text_field :telephone_number %>
+  </div>
+
+<!--パスワード-->
+  <div class="field">
+    <%= f.label :パスワード %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
+<!--パスワード確認-->
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :パスワード（確認用） %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+<!--登録ボタン-->
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
 <%= render "public/shared/links" %>
+
+
+</center>
