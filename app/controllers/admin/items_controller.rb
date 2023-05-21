@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def new
@@ -15,7 +15,7 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(@item.id)
     else
       flash[:notice] = "入力に誤りがあります。"
-      render:new
+      render :new
     end
   end
 
@@ -30,10 +30,12 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    @genre = Genre.all
     if @item.update(item_params)
       redirect_to admin_item_path(@item.id)
     else
-      redirect_to admin_items_path
+      flash[:notice] = "入力に誤りがあります。"
+      render :edit
     end
   end
 
