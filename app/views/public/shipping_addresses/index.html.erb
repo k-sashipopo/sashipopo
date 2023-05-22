@@ -4,13 +4,11 @@
   </div>
   
   <div class="row mt-3 offset-1">
-    <div class="col">
-      <h4>配送先登録/一覧</h4>
-    </div>
+    <h4 class="border-bottom border-gray ml-3">配送先登録<span style="color: #CCCCCC;"> / </span>一覧</h4>
   </div>
 
   <%= form_with model: @shipping_address_new do |f| %>
-  <div class="row mb-3 offset-1">
+  <div class="row my-3 offset-1">
     <div class="col-3">
       <%= f.label "郵便番号(ハイフンなし)" %>
       <%= f.text_field :postcode, class: "form-control" %>
