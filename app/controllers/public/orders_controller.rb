@@ -10,6 +10,17 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @order=Order.new(order_params)
+    if params[:order][:delivery_address] == "0"
+       @order.postcode = current_customer.postcode
+       @order.address = current_customer.address
+       @order.name = current_customer.last_name + current_customer.first_name
+    elsif params[:order][:delivery_address]== "1"
+       @address = ShippingAddress.find(params[:order][:shipping_address_id])
+       @order.post_code = @address.post_code
+       @order.shipping_address = @address.shipping_address
+       @order.name = @address.name
+    end
     # @cart_items = Order.new(order_params)
     # @delivery_address = ShippingAddress.find(params[:order][:address_id])
     

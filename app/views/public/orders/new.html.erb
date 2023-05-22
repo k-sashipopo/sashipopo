@@ -17,6 +17,8 @@
       <div class="mb-2"><h5 class="mr-2">お届け先</h5>
         <%= f.radio_button :delivery_address, 0 %>
         <%= f.label :shipping_addresses_customer_id, "ご自身の住所" %><br>
+        <%= '〒' + current_customer.postcode + ' ' + current_customer.address %><br>
+        <%= current_customer.family_name + current_customer.first_name %>
         
         <%= f.radio_button :delivery_address, 1 %>
         <%= f.label :options_from_collection_for_select, "ご登録済住所から選択" %><br>
