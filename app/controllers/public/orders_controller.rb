@@ -10,8 +10,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @cart_items = Order.new(order_params)
-    @delivery_address = ShippingAddress.find(params[:order][:address_id])
+    # @cart_items = Order.new(order_params)
+    # @delivery_address = ShippingAddress.find(params[:order][:address_id])
+    
+    # @order.delivery_postcode = current_customer.postcode
+    # @order.delivery_address = current_customer.shipping_address
+    # @order.delivery_name = current_customer.first_name + current_customer.last_name
 
   end
 
@@ -29,6 +33,6 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:oder).permit(:customer_id, :total_price, :pay_option, :status, :postage, :delivery_name, :delivery_address, :delivery_postcode)
+    params.require(:order).permit(:customer_id, :total_price, :pay_option, :status, :postage, :delivery_name, :delivery_address, :delivery_postcode)
   end
 end

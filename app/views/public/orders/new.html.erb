@@ -5,7 +5,7 @@
 
   <div class="row my-3 offset-2">
     
-      <%= form_with model: @order, url: orders_confirm_path(@order.id), local: true do |f| %>
+      <%= form_with model: @order, url: orders_confirm_path, method: :post, local: true do |f| %>
       <div class="mb-2"><h5 class="mr-2">支払方法</h5>
         <%= f.radio_button :pay_option, "credit_card" %>
         <%= f.label :pay_option_credit_card, Order.pay_options_i18n[:credit_card] %><br>
@@ -24,11 +24,10 @@
         <%= f.radio_button :delivery_address, 2 %>
         <%= f.label :pay_option_transfer, "新しいお届け先" %><br>
       </div>
+      
+      <div class="row justify-content-center m-3">
+        <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+      </div>
       <% end %>
   </div>
-  
-  <div class="row justify-content-center m-3">
-    <%= link_to "確認画面へ進む", orders_confirm_path, class: "btn btn-primary" %>
-  </div>
-  
 </div>
