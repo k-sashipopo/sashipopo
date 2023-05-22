@@ -1,2 +1,27 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+ <div class="row">
+  <div class="col-md-12 col-md-offset-1 mx-auto mt-3">
+  <h3>注文履歴一覧</h3>
+  <table class="table">
+   <thead>
+     <th>購入日時</th>
+     <th>購入者</th>
+     <th>注文個数</th>
+     <th>ステータス</th>
+     <th>注文詳細</th>
+   </thead>
+   <tbody>
+    <% @orders.each do |order| %>
+     <td><%= link_to admin_order_path(order.id) do %>
+    <%= l order.created_at %><%end%></td>
+     <td><%= order.name %></td>
+     <td><%= order.order_products.sum(:amount) %></td>
+     <td><%= t("enums.order.status.#{order.status}") %></td>
+     <td><%= link_to "注文詳細", admin_order_path(order.id), class: "btn btn-success"%></td>
+    </tbody>
+    <% end %>
+    </table>
+     <%= paginate @orders %>
+   </div>
+  </div>
+ </div>
