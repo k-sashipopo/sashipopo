@@ -67,5 +67,3 @@ class Public::CartItemsController < ApplicationController
     return total_price
   end
 end
-
-
