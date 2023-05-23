@@ -27,8 +27,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     delete 'cart_items/destroy_all', to: 'cart_items#destroy_all', as: 'destroy_all_cart_items'
     resources :cart_items, only: [:index, :update, :destroy, :create]
     
-    get 'customers/confirm'
-    patch 'customers/resign'
+    get 'customers/:id/confirm' => 'customers#confirm', as: 'confirm'
+    patch 'customers/:id/resign' => 'customers#resign', as: 'resign'
     resources :customers, only: [:show, :edit, :update]
 
     resources :items, only: [:index, :show]

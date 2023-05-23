@@ -14,9 +14,15 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm
+    # @customer = Customer.find_by(email: params[:customer][:email])
   end
 
   def resign
+    @customer= Customer.find(params[:id])
+    @customer.update(customer_status: true)
+    reset_session
+    # flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
 
 private

@@ -23,8 +23,7 @@
       </li>
 
       <li>
-      <!--ほんたろ、パスを編集2023.05.21-->
-      <%= link_to admin_homes_top_path,class: 'nav-link text-light' do %>
+      <%= link_to admin_homes_top_path,class: 'nav-link text-secondary' do %>
       <i class="fas fa-cart-plus"></i> 注文履歴一覧
       <% end %>
       </li>
@@ -46,9 +45,7 @@
 
       <% elsif customer_signed_in? %> <!--userログイン状態の際に、表示したいheaderのメニューを記載-->
       
-      <!--<li>-->
-      <!--ようこそ、<%#= current_customer.first_name %>さん！-->
-      <!--</li>-->
+      
       
       <%= link_to customer_path(current_customer),class: 'nav-link text-secondary' do %>
       <i class="fab fa-pagelines"></i> My page
@@ -72,7 +69,6 @@
       <i class="fas fa-sign-out-alt"></i> Sign out
       <% end %>
       </li>
-
 
       <li>
       <form class="d-flex">
