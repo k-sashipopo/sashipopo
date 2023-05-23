@@ -25,3 +25,7 @@
         previous: "&lsaquo; 前"
         next: "次 &rsaquo;"
         truncate: "..."
+        
+    time:
+      formats:
+        default: "%Y/%m/%d %H:%M:%S"

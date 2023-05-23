@@ -6,28 +6,28 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    #@customer = current_customer
     @order = current_customer.orders.new(order_params)
     @order.save
     @cart_items = current_customer.cart_items.all
-    @total_price = @postage #合計金額の計算
 
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
       @order_details = OrderDetail.new #初期化宣言
       @order_details.order_id = @order.id
       @order_details.item_id = cart_item.item.id
-      @order_details.count = cart_item.count
-      @order_details.with_tax_price = cart_item.item.with_tax_price
+      @order_details.buy_quantity = cart_item.count
+      @order_details.tax_in_price = cart_item.item.with_tax_price
       @order_details.save
     end
-      redirect_to completed_orders_path #注文完了ページに遷移
+      redirect_to orders_completed_path #注文完了ページに遷移
       current_customer.cart_items.destroy_all #カートの中身を削除
   end
 
   def confirm #配送先選択
     @order = Order.new(order_params)
     @postage = 400
+    @total_price =    @postage #合計金額の計算
+
     if params[:order][:select_address] == "0"
       @order.delivery_postcode = current_customer.postcode
       @order.delivery_address = current_customer.address
@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.all.page(params[:page]).per(10)
+    @orders = current_customer.orders.includes(:order_details, :items).page(params[:page]).per(10)
   end
 
   def show
@@ -63,5 +63,7 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:customer_id, :total_price, :pay_option, :status, :postage, :delivery_name, :delivery_address, :delivery_postcode)
   end
+
+  
 
 end
