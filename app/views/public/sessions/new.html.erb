@@ -1,6 +1,6 @@
-<center>
+<div class="container">
   
-
+<%= flash[:notice] %>
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -33,4 +33,4 @@
 
 <%= render "public/shared/links" %>
 
-</center>
+</div>

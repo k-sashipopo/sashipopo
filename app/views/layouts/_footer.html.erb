@@ -8,7 +8,26 @@
             
           </div>
           <div class="col-md-8">
+
+            
             <%= image_tag('logo.png') %>
+              <% if admin_signed_in? %> <!--adminログイン状態の際に、表示したいheaderのメニューを記載-->
+              
+              <%= link_to admin_homes_top_path, class:'btn btn-outline-danger' do %>
+              管理者用ログイン中
+              <% end %>
+              
+              <% elsif customer_signed_in? %> <!--userログイン状態の際に、表示したいheaderのメニューを記載-->
+              
+              <%= link_to customer_path(current_customer), class:'btn btn-outline-secondary' do %>
+              ようこそ、<%= current_customer.first_name %>さん！
+              <% end %>
+              
+              <% else %><!--adminでもuserでもログインしていない時に表示するheaderのメニューを記載-->
+              
+              <% end %>
+            
+            
             <h6 class="text-secondary mt-2 mb-3">~長野から全国へ素敵なひと時を~</h6>
             <ul class="p-0 list-unstyled">
               <li>
@@ -20,6 +39,9 @@
               <li>
                 <a href="" title="FAX" class="text-secondary">FAX:072-XXX-XXXX</a>
               </li>
+              
+
+             
             </ul>
           </div>
         </div>
