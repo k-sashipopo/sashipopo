@@ -34,8 +34,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
 
 
       t.timestamps null: false
-      
-      
+
+
       #↓手動で追加↓#
       t.string :last_name
       t.string :first_name
@@ -46,7 +46,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :address
       t.boolean :customer_status, default: false
       #↑手動で追加↑#
-      
+
     end
 
     add_index :customers, :email,                unique: true

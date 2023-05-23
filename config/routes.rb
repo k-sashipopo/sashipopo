@@ -38,6 +38,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   #管理者側
 
+
   namespace :admin do
     get 'homes/top'
 
