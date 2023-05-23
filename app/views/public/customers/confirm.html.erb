@@ -1,2 +1,23 @@
-<h1>Public::Customers#confirm</h1>
-<p>Find me in app/views/public/customers/confirm.html.erb</p>
+<div class="container">
+<center>
+<br>
+<h1>本当に退会しますか？</h1>
+<p>退会すると、会員登録情報や</p>
+<p>これまでの購入履歴が閲覧できなくなります。</p>
+<p>退会する場合は、「退会する」をクリックしてください。</p>
+
+<%= link_to root_path, class:'btn btn-outline-primary' do %>
+<i class="fas fa-birthday-cake"></i>退会しない
+<% end %>
+
+
+
+<%= link_to customers_confirm_path, class:'btn btn-outline-danger' do %>
+<i class="fas fa-heart-broken"></i>退会する
+<% end %>
+
+<p>退会機能未実装5月22日メモ</p>
+
+</center>
+</div>
+<br>
