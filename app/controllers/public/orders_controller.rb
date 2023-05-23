@@ -26,7 +26,6 @@ class Public::OrdersController < ApplicationController
   def confirm #配送先選択
     @order = Order.new(order_params)
     @postage = 400
-    @total_price =    @postage #合計金額の計算
 
     if params[:order][:select_address] == "0"
       @order.delivery_postcode = current_customer.postcode
@@ -55,7 +54,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    # @order = Order.find(params[:id])
+    @order = Order.find(params[:id])
+    @postage = 400
   end
 
 
