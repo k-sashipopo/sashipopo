@@ -1,16 +1,79 @@
-<center>
 
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<br>
+<div class="container">
 
-アプリケーションを完成させよう２
+<h2><%= @customer.first_name %> <%= @customer.last_name %>さんのマイページ</h2>
 
+<br>
 
 
 <div>
-  <p>名：<%= @customer.first_name %></p>
-  <p>名：<%= @customer.last_name %></p>
+  <h5>登録情報</h5>
+  <table border="2", width=80% height="200">
+  
+  <tr>
+  <th>氏名</th>
+  <td><%= @customer.first_name %> <%= @customer.last_name %></td>
+  <tr>
+  
+  <tr>
+  <th>カナ</th>
+  <td><%= @customer.kana_first_name %> <%= @customer.kana_last_name %></td>
+  </tr>
+  
+  <tr>
+  <th>郵便番号</th>
+  <td><%= @customer.postcode %></td>
+  <tr>
+  
+  <tr>  
+  <th>住所</th>
+  <td><%= @customer.address %></td>
+  </tr>
+  
+  <tr>
+  <th>電話番号</th>
+  <td><%= @customer.telephone_number %></td>
+  </tr>
+  
+  <tr>
+  <th>メールアドレス</th>
+  <td><%= @customer.email %></td>
+  </tr>
+  
+  
+  </table>
+  
 </div>
 
 
-</center>
+<br>
+
+<!--編集する（リンク化）-->
+
+<font color="red">会員情報変更はこちら：</font>
+<%= link_to edit_customer_path, class:'btn btn-outline-danger' do %>
+<i class="fas fa-user-cog"></i>会員情報編集
+<% end %>
+
+<br>
+<br>
+
+<!--配送先：一覧を見る（リンク化）-->
+<font color="orange">配送先一覧はこちら　：</font>
+<%= link_to shipping_addresses_path, class:'btn btn-outline-warning' do %>
+<i class="fas fa-truck-moving"></i>配送先一覧
+<% end %>
+
+<br>
+<br>
+      
+<!--注文履歴：一覧を見る（リンク化）-->
+<font color="green">注文履歴一覧はこちら：</font>
+<%= link_to orders_path, class:'btn btn-outline-success' do %>
+<i class="fas fa-birthday-cake"></i>注文履歴一覧
+<% end %>
+
+
+</div>
+<br>
