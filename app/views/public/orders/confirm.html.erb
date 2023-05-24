@@ -18,10 +18,10 @@
         <tbody class="content-center">
           <% @cart_items.each do |cart_item| %>
           <tr>
-            <td><%= image_tag cart_item.item.image, size: "80x65" %><%= cart_item.item.name %></td>
-            <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
-            <td><%= cart_item.count %></td>
-            <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+            <td class="align-middle text-left">　<%= image_tag cart_item.item.image, size: "80x65" %>　<%= cart_item.item.name %></td>
+            <td class="align-middle"><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+            <td class="align-middle"><%= cart_item.count %></td>
+            <td class="align-middle"><%= cart_item.subtotal.to_s(:delimited) %></td>
           </tr>
           <% end %>
         </tbody>
@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-5">
-      <table class="table table-bordered text-center mt-3">
+      <table class="table table-bordered mt-3">
         <tr>
           <th>送料</th>
           <td><%= @postage %></td>

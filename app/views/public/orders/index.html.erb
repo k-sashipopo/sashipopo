@@ -3,9 +3,9 @@
     <h4 class="border-bottom border-gray">注文履歴一覧</h4>
   </div>  
   
-  <div class="row">
-    <table class="table table-bordered text-center mt-3">
-      <thead>
+  <div class="row justify-content-center mb-4">
+    <table class="table table-hover table-bordered text-center mt-3">
+      <thead class="thead-light">
         <tr>
           <th>注文日</th>
           <th>配送先</th>
@@ -14,28 +14,28 @@
           <th>ステータス</th>
           <th>注文詳細</th>
         </tr>
-        
-        <tbody>
-          <% @orders.each do |order| %>
-          <tr>
-            <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
-            <td><%= order.delivery_address %></td>
-            <td>
-              <% order.items.each do |item| %>
-              <p><%= item.name %></p>
-              <% end %>
-            </td>
-            <td><%= number_with_delimiter(order.total_price) %></td>
-            <td><%= order.status_i18n %></td>
-            <td>
-              <%= link_to "表示する", order_path(order.id), class: "btn btn-outline-success mb-4" %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </thead>  
-    </table>
-  </div>
+      </thead>
+      
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <td class="align-middle"><%= order.created_at.strftime("%Y/%m/%d") %></td>
+          <td class="align-middle"><%= order.delivery_address %></td>
+          <td class="align-middle">
+            <% order.items.each do |item| %>
+            <p><%= item.name %></p>
+            <% end %>
+          </td>
+          <td class="align-middle"><%= order.total_price.to_s(:delimited) %>円</td>
+          <td class="align-middle"><%= order.status_i18n %></td>
+          <td class="align-middle content-center">
+            <%= link_to "表示する", order_path(order.id), class: "btn btn-outline-success" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </thead>  
+  </table>
   
   <div class="pagination d-flex justify-content-center mb-4">
     <%= paginate @orders %>
