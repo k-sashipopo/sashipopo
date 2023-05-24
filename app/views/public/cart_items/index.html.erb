@@ -10,7 +10,7 @@
   
   <div class="row">
     <table class="table table-bordered text-center mt-3">
-      <thead>
+      <thead class="thead-light">
         <tr>
           <th>商品名</th>
           <th>単価(税込)</th>
@@ -49,6 +49,10 @@
     </table>
   </div>
     
+  <div class="text-center mb-3">
+    <h6><%= flash[:notice] %></h6>
+  </div>
+
   <div class="row justify-content-center">
     <%= link_to "買い物を続ける", items_path, class: "btn btn-outline-primary px-3" %>
   </div>
