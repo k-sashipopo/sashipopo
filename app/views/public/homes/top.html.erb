@@ -1,19 +1,7 @@
 <center>
-  
+  <%= video_tag("/videos/myvideo2.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
 
+  <%= render 'genrebar' %>
 
-
-<%= video_tag("/videos/myvideo2.mp4", autoplay: :true, loop: :true, muted: :true, class: 'video-content') %>
-<%= render 'genrebar' %>
-
-<%= render 'newitems' %>
-
-
-
+  <%= render 'newitems' %>
 </center>
-
-
-<!--<h1>Public::Homes#top</h1>-->
-<!--<p>Find me in app/views/public/homes/top.html.erb</p>-->
-
-<!--_genrebar-->

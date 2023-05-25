@@ -1,26 +1,24 @@
 <div class="container">
   <div class="row justify-content-center mt-3">
     <h3 class="border-bottom border-gray">
-      <%= @customer.first_name %>　<%= @customer.last_name %>さんのマイページ
+      <%= @customer.first_name %> <%= @customer.last_name %>さんのマイページ
     </h3>
   </div>
 
   <div class="row justify-content-center my-2">
     <h4 class="justify-text-center">登録情報</h4>
   </div>
-
-
+  
   <div class="row justify-content-center">
     <div class="col-6 offset-1">
       <table class="table table-borderless">
-      
         <tr>
           <th>氏名</th>
-          <td><%= @customer.first_name %> <%= @customer.last_name %></td>
+          <td><%= @customer.first_name %>　<%= @customer.last_name %></td>
         <tr>
         <tr>
           <th>カナ</th>
-          <td><%= @customer.kana_first_name %> <%= @customer.kana_last_name %></td>
+          <td><%= @customer.kana_first_name %>　<%= @customer.kana_last_name %></td>
         </tr>
         <tr>
           <th>郵便番号</th>

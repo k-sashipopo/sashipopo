@@ -10,7 +10,7 @@
           <th class="align-middle">購入者</th>
           <td style="padding-bottom: 10px;">
           <%= link_to admin_customers_path do %>
-            <%= @order.customer.first_name + "　" + @order.customer.last_name %>
+            <%= @order.customer.first_name + " " + @order.customer.last_name %>
           <% end %>
           </td>
         </tr>
@@ -71,22 +71,20 @@
       </table>
     </div>
     
-    <div class="col-4 mb-2">
+    <div class="col-4 pr-2 mb-2">
       <table>
         <tr>
-          <th class="h5"><strong>商品合計</strong></th>
+          <th class="h5">商品合計</th>
           <td class="h6"><%= (@order.total_price - @postage).to_s(:delimited) %>円</td>
         </tr>
         <tr>
-          <th class="h5"><strong>配送料</strong></th>
+          <th class="h5">配送料</th>
           <td class="h6"><%= @postage %>円</td>
         </tr>
         <tr>
           <th class="h5"><strong>請求金額合計　</strong></th>
           <td class="h5">
-            <strong>
-              <%= @order.total_price.to_s(:delimited) %> 円
-            </strong>
+            <strong><%= @order.total_price.to_s(:delimited) %>円</strong>
           </td>
         </tr>
       </table>

@@ -25,8 +25,7 @@
             <td><%= image_tag cart_item.item.image, size: "100x75" %>
               <p><%= cart_item.item.name %></p>
             </td>
-            <td class="align-middle">
-              <!--税込価格-->
+            <td class="align-middle"> <!--税込価格-->
               <p><%= cart_item.item.with_tax_price.to_s(:delimited) %></p>
             </td>
             <td class="align-middle">
@@ -35,8 +34,7 @@
                 <%= f.submit "変更", class: "btn btn-success mb-3" %>
               <% end %>
             </td>
-            <td class="align-middle">
-              <!--小計-->
+            <td class="align-middle"> <!--小計-->
               <%= cart_item.subtotal.to_s(:delimited) %>
             </td>
             <td class="align-middle">

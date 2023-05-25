@@ -14,10 +14,8 @@
       </thead>
       <tbody>
       <% @orders.each do |order| %>
-        <td>
-          <%= link_to admin_order_path(order.id) do %>
+        <td class="align-middle">
           <%= order.created_at.strftime("%Y/%m/%d") %>
-          <%end%>
         </td>
         <td class="align-middle"><%= order.delivery_name %></td>
         <td class="align-middle"><%= order.order_details.sum(:buy_quantity) %></td>
