@@ -1,56 +1,48 @@
-<br>
 <div class="container">
+  <div class="row justify-content-center my-3">
+    <%= flash[:notice] %>
+    <h3 class="border-bottom border-gray">会員ログイン</h3>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="row justify-content-md-center">
+    <table>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %></td>
+      </tr>
+    
+      <tr>
+        <th>パスワード</th>
+        <td><%= f.password_field :password, autocomplete: "current-password", placeholder:"パスワード" %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="row justify-content-md-center pb-md-4">
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+  </div>
   
-<%= flash[:notice] %>
-<h2>会員ログイン</h2>
-
-<br>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-<!--メールアドレス-->
-
-<table>
-  <tr>
-  <th>メールアドレス</th>
-  <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %></td>
-  </tr>
-
-  <tr>
-  <th>パスワード</th>
-  <td><%= f.password_field :password, autocomplete: "current-password", placeholder:"パスワード" %></td>
-  </tr>
-</table>
-  
-
-<!--記憶させますか？？？-->
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="row justify-content-md-center pb-md-4">
+    <div class="actions">
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
     </div>
   <% end %>
-
-<br>
-
-<!--ログインボタン-->
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
 
-<br>
-
-<%= link_to new_customer_registration_path, class:'btn btn-outline-success' do %>
-会員登録はこちら
-<% end %>
-
-<br>
-<br>
-<%= link_to new_admin_session_path, class:'btn btn-outline-danger' do %>
-管理者ログインはこちら
-<% end %>
-
-
+  <div class="row justify-content-md-center pb-md-4">
+    <%= link_to new_customer_registration_path, class:'btn btn-outline-success mr-2' do %>
+    会員登録はこちら
+    <% end %>
+    
+    <%= link_to new_admin_session_path, class:'btn btn-outline-danger' do %>
+    管理者ログインはこちら
+    <% end %>
+  </div>
 </div>
-
-<br>

@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <h4 class="p-3 mb-2 bg-light text-dark">商品編集<h4>
+  <div class="row justify-content-center mt-3 mb-4">
+    <h3 class="border-bottom border-gray">商品編集</h3>
   </div>
 
     <div class="row justify-content-lg-center">
@@ -21,7 +21,7 @@
 
           <div class="form-row pb-md-3">
             <div class="col-sm-4"><%= f.label :商品説明 %></div>
-              <div class="col-sm-8"><%= f.text_area :intro %></div>
+              <div class="col-sm-8"><%= f.text_area :intro, size: "25x2" %></div>
           </div>
 
           <div class="form-row pb-md-3">

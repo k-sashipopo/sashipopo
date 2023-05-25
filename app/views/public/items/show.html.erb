@@ -11,7 +11,13 @@
         <%= f.hidden_field :item_id, value: @item.id %>
         <%= f.label :count, "個数選択" %>
         <%= f.select :count, *[1..10] %>
-        <%= f.submit "カートに入れる", class: 'btn btn-outline-success mb-3 ml-3' %>
+        
+          <% if @item.sale_status == false %>
+            <%= f.submit "カートに入れる", class: 'btn btn-outline-success mb-3 ml-3' %>
+          <% else %>
+            <b>　売り切れ</b>
+          <% end %>
+        
       <% end %>
     </div>
   </div>
