@@ -1,79 +1,65 @@
-
-<br>
 <div class="container">
+  <div class="row justify-content-center mt-3">
+    <h3 class="border-bottom border-gray">
+      <%= @customer.first_name %>　<%= @customer.last_name %>さんのマイページ
+    </h3>
+  </div>
 
-<h2><%= @customer.first_name %> <%= @customer.last_name %>さんのマイページ</h2>
-
-<br>
-
-
-<div>
-  <h5>登録情報</h5>
-  <table border="2", width="1000" height="200">
-  
-  <tr>
-  <th>氏名</th>
-  <td width="500"><%= @customer.first_name %> <%= @customer.last_name %></td>
-  <tr>
-  
-  <tr>
-  <th>カナ</th>
-  <td width="500"><%= @customer.kana_first_name %> <%= @customer.kana_last_name %></td>
-  </tr>
-  
-  <tr>
-  <th>郵便番号</th>
-  <td width="500"><%= @customer.postcode %></td>
-  <tr>
-  
-  <tr>  
-  <th>住所</th>
-  <td width="500"><%= @customer.address %></td>
-  </tr>
-  
-  <tr>
-  <th>電話番号</th>
-  <td width="500"><%= @customer.telephone_number %></td>
-  </tr>
-  
-  <tr>
-  <th>メールアドレス</th>
-  <td width="500"><%= @customer.email %></td>
-  </tr>
-  
-  
-  </table>
-  
-</div>
+  <div class="row justify-content-center my-2">
+    <h4 class="justify-text-center">登録情報</h4>
+  </div>
 
 
-<br>
-
-<!--編集する（リンク化）-->
-
-<font color="red">会員情報変更はこちら：</font>
-<%= link_to edit_customer_path, class:'btn btn-outline-danger' do %>
-<i class="fas fa-user-cog"></i>会員情報編集
-<% end %>
-
-<br>
-<br>
-
-<!--配送先：一覧を見る（リンク化）-->
-<font color="orange">配送先一覧はこちら　：</font>
-<%= link_to shipping_addresses_path, class:'btn btn-outline-warning' do %>
-<i class="fas fa-truck-moving"></i>配送先一覧
-<% end %>
-
-<br>
-<br>
+  <div class="row justify-content-center">
+    <div class="col-6 offset-1">
+      <table class="table table-borderless">
       
-<!--注文履歴：一覧を見る（リンク化）-->
-<font color="green">注文履歴一覧はこちら：</font>
-<%= link_to orders_path, class:'btn btn-outline-success' do %>
-<i class="fas fa-birthday-cake"></i>注文履歴一覧
-<% end %>
-
-
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.first_name %> <%= @customer.last_name %></td>
+        <tr>
+        <tr>
+          <th>カナ</th>
+          <td><%= @customer.kana_first_name %> <%= @customer.kana_last_name %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postcode %></td>
+        <tr>
+        <tr>  
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center mb-3">
+    <font color="red">会員情報変更はこちら：</font>
+    <%= link_to edit_customer_path, class:'btn btn-outline-danger' do %>
+    <i class="fas fa-user-cog"></i>会員情報編集
+    <% end %>
+  </div>
+  
+  <div class="row justify-content-center mb-3">
+    <font color="orange">配送先一覧はこちら　：</font>
+    <%= link_to shipping_addresses_path, class:'btn btn-outline-warning' do %>
+    <i class="fas fa-truck-moving"></i>配送先一覧
+    <% end %>
+  </div>
+  
+  <div class="row justify-content-center mb-3">
+    <font color="green">注文履歴一覧はこちら：</font>
+    <%= link_to orders_path, class:'btn btn-outline-success' do %>
+    <i class="fas fa-birthday-cake"></i>注文履歴一覧
+    <% end %>
+  </div>
 </div>
-<br>

@@ -1,50 +1,50 @@
 <div class="container">
-  <div class="row">
-    <h4 class="p-3 mb-2 bg-light text-dark">商品新規登録<h4>
+  <div class="row justify-content-center mt-3 mb-4">
+    <h3 class="border-bottom border-gray">商品新規登録</h3>
   </div>
 
-    <div class="row justify-content-lg-center">
-      <div class="mx-auto">
-        <div class="col-lg-12">
-          <%= flash[:notice] %>
-          <%= form_with model: @item, url: admin_items_path, method: :post, local: true do |f| %>
+  <div class="row justify-content-lg-center">
+    <div class="mx-auto">
+      <div class="col-lg-12">
+        <%= flash[:notice] %>
+        <%= form_with model: @item, url: admin_items_path, method: :post, local: true do |f| %>
 
-          <div class="form-row pb-md-3">
-            <div class="col-sm-4"><%= f.label :商品画像 %></div>
-              <div class="col-sm-8"><%= f.file_field :image, accept: 'image/*' %></div>
-          </div>
-
-          <div class="form-row pb-md-3">
-            <div class="col-sm-4"><%= f.label :商品名 %></div>
-              <div class="col-sm-8"><%= f.text_field :name %></div>
-          </div>
-
-          <div class="form-row pb-md-3">
-            <div class="col-sm-4"><%= f.label :商品説明 %></div>
-              <div class="col-sm-8"><%= f.text_area :intro %></div>
-          </div>
-
-          <div class="form-row pb-md-3">
-            <div class="col-sm-4"><%= f.label :ジャンル %></div>
-              <div class="col-sm-8"><%= f.select :genre_id, options_from_collection_for_select(@genre, :id, :name), { include_blank: "--選択してください--" } %></div>
-          </div>
-
-          <div class="form-row pb-md-3">
-            <div class="col-sm-4"><%= f.label :税抜価格 %></div>
-              <div class="col-sm-8"><%= f.text_field :tax_free_price %>円</div>
-          </div>
-
-          <div class="form-row pb-md-3">
-            <div class="col-sm-4"><%= f.label :販売ステータス %></div>
-              <div class="text-center"><%= f.radio_button :sale_status, :false %><%= f.label :販売中 %></div>
-              <div class="text-center pl-md-4"><%= f.radio_button :sale_status, :true %><%= f.label :販売停止中 %></div>
-          </div>
-
-          <div class="row justify-content-center mb-md-4">
-            <%= f.submit '新規登録', class: "btn btn-success" %>
-          </div>
-        <% end %>
+        <div class="form-row pb-md-3">
+          <div class="col-sm-4"><%= f.label :商品画像 %></div>
+            <div class="col-sm-8"><%= f.file_field :image, accept: 'image/*' %></div>
         </div>
+
+        <div class="form-row pb-md-3">
+          <div class="col-sm-4"><%= f.label :商品名 %></div>
+            <div class="col-sm-8"><%= f.text_field :name %></div>
+        </div>
+
+        <div class="form-row pb-md-3">
+          <div class="col-sm-4"><%= f.label :商品説明 %></div>
+            <div class="col-sm-8"><%= f.text_area :intro, size: "25x2" %></div>
+        </div>
+
+        <div class="form-row pb-md-3">
+          <div class="col-sm-4"><%= f.label :ジャンル %></div>
+            <div class="col-sm-8"><%= f.select :genre_id, options_from_collection_for_select(@genre, :id, :name), { include_blank: "--選択してください--" } %></div>
+        </div>
+
+        <div class="form-row pb-md-3">
+          <div class="col-sm-4"><%= f.label :税抜価格 %></div>
+            <div class="col-sm-8"><%= f.text_field :tax_free_price %>円</div>
+        </div>
+
+        <div class="form-row pb-md-3">
+          <div class="col-sm-4"><%= f.label :販売ステータス %></div>
+            <div class="text-center"><%= f.radio_button :sale_status, :false %><%= f.label :販売中 %></div>
+            <div class="text-center pl-md-4"><%= f.radio_button :sale_status, :true %><%= f.label :販売停止中 %></div>
+        </div>
+
+        <div class="row justify-content-center mb-md-4">
+          <%= f.submit '新規登録', class: "btn btn-success" %>
+        </div>
+      <% end %>
       </div>
     </div>
+  </div>
 </div>

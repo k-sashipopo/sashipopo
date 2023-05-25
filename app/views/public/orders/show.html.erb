@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center my-3">
-    <h4 class="border-bottom border-gray">注文履歴詳細</h4>
+    <h3 class="border-bottom border-gray">注文履歴詳細</h3>
   </div>
   
   <div class="row">
@@ -70,7 +70,7 @@
             <td><%= order_detail.item.with_tax_price.to_s(:delimited) %>円</td>
             <td><%= order_detail.buy_quantity %></td>
             <td>
-              <%= order_detail.tax_in_price.to_s(:delimited) %>円
+              <%= (order_detail.tax_in_price * order_detail.buy_quantity).to_s(:delimited) %>円
             </td>
           </tr>
         <% end %>

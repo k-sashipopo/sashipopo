@@ -1,45 +1,49 @@
 <div class="container">
-  <div class="row">
-    <h4 class="p-3 mb-2 bg-light text-dark">商品一覧<h4>
+  <div class="row justify-content-center mt-3">
+    <h3 class="border-bottom border-gray">商品一覧<h3>
   </div>
 
   <div class="row justify-content-end">
     <%= link_to new_admin_item_path do %>
-      <i class="fas fa-plus-circle fa-2x mb-md-3"></i>
+      <i class="fas fa-plus-circle fa-2x mb-1"></i>
     <% end %>
   </div>
 
    <div class="row">
     <table class="table table-bordered table-hover">
-    <thead class="table-secondary">
-      <tr>
-        <th>商品ID</th>
-        <th>商品名</th>
-        <th>税抜価格</th>
-        <th>ジャンル</th>
-        <th>ステータス</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id) %></td>
-        <td><%= (item.tax_free_price).floor.to_s(:delimited) %></td>
-        <td><%= item.genre.name %></td>
-        <td>
-          <% if item.sale_status == false %>
-            <b class="text-success"><%= '販売中' %></b>
-          <% else %>
-            <b class="text-secondary"><%= '販売停止中' %></b>
-          <% end %>
-        </td>
-      </tr>
-    </tbody>
+      <thead class="thead-light">
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= link_to item.name, admin_item_path(item.id) %></td>
+          <td><%= (item.tax_free_price).floor.to_s(:delimited) %></td>
+          <td><%= item.genre.name %></td>
+          <td>
+            <% if item.sale_status == false %>
+              <b class="text-success"><%= '販売中' %></b>
+            <% else %>
+              <b class="text-secondary"><%= '販売停止中' %></b>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
       <% end %>
     </table>
-  <div class="mx-auto"><%= paginate @items %></div>
   </div>
+  
+  <div class="pagination d-flex justify-content-center mb-4">
+    <%= paginate @items %>
+  </div>
+
 </div>
 

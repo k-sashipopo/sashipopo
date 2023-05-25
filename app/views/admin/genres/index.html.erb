@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <h4 class="p-3 mb-2 bg-light text-dark">ジャンル一覧・追加<h4>
+  <div class="row justify-content-center my-3">
+    <h3 class="border-bottom border-gray">ジャンル一覧・追加</h3>
   </div>
 
   <!--新規登録-->
@@ -25,21 +25,21 @@
   <!--ジャンル一覧-->
   <div class="row pt-md-5">
     <table class="table">
-    <thead class="table-secondary">
-      <tr>
-        <th>ジャンル</th>
-        <th colspan="1"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @genres.each do |genre| %>
-      <tr>
-        <td><%= genre.name %></td>
-        <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+      <thead class="thead-light">
+        <tr>
+          <th>ジャンル</th>
+          <th colspan="1"></th>
         </tr>
-    </tbody>
-      <% end %>
+      </thead>
+  
+      <tbody>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td><%= genre.name %></td>
+          <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+          </tr>
+      </tbody>
+        <% end %>
     </table>
   </div>
 </div>
