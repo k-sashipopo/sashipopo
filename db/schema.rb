@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_17_073023) do
+ActiveRecord::Schema.define(version: 2023_05_18_092850) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2023_05_17_073023) do
   create_table "cart_items", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "item_id"
+    t.integer "customer_id"
     t.integer "count"
   end
 
@@ -91,11 +93,14 @@ ActiveRecord::Schema.define(version: 2023_05_17_073023) do
     t.integer "tax_free_price"
     t.text "intro"
     t.boolean "sale_status", default: false
+    t.integer "genre_id"
   end
 
   create_table "order_details", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "order_id"
+    t.integer "item_id"
     t.integer "buy_quantity"
     t.integer "tax_in_price"
     t.integer "work_status", default: 0
@@ -104,6 +109,7 @@ ActiveRecord::Schema.define(version: 2023_05_17_073023) do
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
     t.integer "total_price"
     t.integer "pay_option", default: 0
     t.integer "status", default: 0
@@ -116,6 +122,7 @@ ActiveRecord::Schema.define(version: 2023_05_17_073023) do
   create_table "shipping_addresses", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
     t.string "name"
     t.string "address"
     t.string "postcode"

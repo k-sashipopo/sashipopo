@@ -1,2 +1,46 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center my-3">
+    <h3 class="border-bottom border-gray">会員情報編集</h3>
+  </div>
+  
+  <%= form_with model: @customer do |f| %>
+  <table width=80% height="200">
+    <tr>
+      <th>氏名</th>
+      <td>
+      <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"姓"%>
+      <%= f.text_field :last_name, id:"inputName", placeholder:"名"%>
+      </td>
+    </tr>
+    <tr>
+      <th>フリガナ</th>
+      <td>
+      <%= f.text_field :kana_first_name, id:"inputName", placeholder:"姓（カタカナ）"%>
+      <%= f.text_field :kana_last_name, id:"inputName", placeholder:"名（カタカナ）"%>
+      </td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= f.text_field :postcode, id:"postcode", placeholder:"郵便番号"%></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= f.text_field :address, id:"address", placeholder:"住所"%></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= f.text_field :telephone_number, id:"telephone_number", placeholder:"電話番号"%></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= f.text_field :email, id:"email", placeholder:"メールアドレス"%></td>
+    </tr>
+  </table>
+
+  <%= f.submit "変更を保存", class:'btn btn-outline-success my-2' %>
+  <% end %>
+  
+  <%= link_to confirm_path, class:'btn btn-outline-danger mb-2' do %>
+    <i class="fas fa-heart-broken"></i>退会ページへ
+  <% end %>
+</div>

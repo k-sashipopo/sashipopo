@@ -1,2 +1,71 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center mt-3">
+    <h3 class="border-bottom border-gray">ショッピングカート</h3>
+  </div>
+  <div class="row justify-content-end mr-3">
+    <% if current_customer.cart_items.present? %>
+      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: { confirm: "カートを空にしますか？" }, class: 'btn btn-outline-danger' %>
+    <% end %>
+  </div>
+  
+  <div class="row">
+    <table class="table table-bordered text-center mt-3">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+          
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td><%= image_tag cart_item.item.image, size: "100x75" %>
+              <p><%= cart_item.item.name %></p>
+            </td>
+            <td class="align-middle"> <!--税込価格-->
+              <p><%= cart_item.item.with_tax_price.to_s(:delimited) %></p>
+            </td>
+            <td class="align-middle">
+              <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
+                <%= f.select :count, *[1..10], class: "form-control" %>
+                <%= f.submit "変更", class: "btn btn-success mb-3" %>
+              <% end %>
+            </td>
+            <td class="align-middle"> <!--小計-->
+              <%= cart_item.subtotal.to_s(:delimited) %>
+            </td>
+            <td class="align-middle">
+              <%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: { confirm: "商品を削除しますか？"}, class: "btn btn-danger" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </thead>
+    </table>
+  </div>
+    
+  <div class="text-center mb-3">
+    <h6><%= flash[:notice] %></h6>
+  </div>
+
+  <div class="row justify-content-center">
+    <%= link_to "買い物を続ける", items_path, class: "btn btn-outline-primary px-3" %>
+  </div>
+  
+  <table class="table table-bordered contents-area col-3 ml-auto">
+    <tbody>
+      <tr>
+        <th>合計金額</th>
+        <th><%= @total_price.to_s(:delimited) %></th>
+      </tr>
+    </tbody>
+  </table>
+        
+  <div class="row justify-content-end mr-1">
+    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-outline-success mb-4" %>
+  </div>
+</div>
+

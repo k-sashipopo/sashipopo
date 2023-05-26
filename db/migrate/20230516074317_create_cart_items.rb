@@ -5,6 +5,8 @@ class CreateCartItems < ActiveRecord::Migration[6.1]
       t.timestamps
       
       #↓手動で追加↓#
+      t.integer :item_id
+      t.integer :customer_id
       t.integer :count
       #↑手動で追加↑#
       

@@ -1,2 +1,28 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col-2 text-center mt-5">
+      <%= render 'genrebar', genres: @genres %>
+    </div>
+
+    <div class="col-8 d-flex flex-wrap justify-content-center">
+      <div class="my-3">
+        <%= image_tag @item.image, size:'400x300', class: "mb-2" %><br>
+        <h5 class="text-center font-weight-bold"><%= @item.name %></h5>
+        <p><%= @item.intro %></p>
+        <p>¥<%= @item.with_tax_price.to_s(:delimited) %>(税込)</p>
+  
+        <%= form_with model: @cart_item, url: cart_items_path, method: :post, class: 'align-items-end' do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <%= f.label :count, "個数選択" %>
+          <%= f.select :count, *[1..10] %>
+          
+          <% if @item.sale_status == false %>
+            <%= f.submit "カートに入れる", class: 'btn btn-outline-success mb-3 ml-3' %>
+          <% else %>
+            <b>　売り切れ</b>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
