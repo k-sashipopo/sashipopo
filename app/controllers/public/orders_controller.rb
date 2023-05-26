@@ -12,7 +12,7 @@ class Public::OrdersController < ApplicationController
 
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
-      @order_details = OrderDetail.new #初期化宣言
+      @order_details = OrderDetail.new
       @order_details.order_id = @order.id
       @order_details.item_id = cart_item.item.id
       @order_details.buy_quantity = cart_item.count
@@ -23,11 +23,11 @@ class Public::OrdersController < ApplicationController
       current_customer.cart_items.destroy_all #カートの中身を削除
   end
 
-  def confirm #配送先選択
+  def confirm 
     @order = Order.new(order_params)
     @postage = 400
-    @total_price =    @postage #合計金額の計算
 
+    #配送先選択
     if params[:order][:select_address] == "0"
       @order.delivery_postcode = current_customer.postcode
       @order.delivery_address = current_customer.address
