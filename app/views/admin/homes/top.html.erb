@@ -17,7 +17,7 @@
         <td class="align-middle">
           <%= order.created_at.strftime("%Y/%m/%d") %>
         </td>
-        <td class="align-middle"><%= order.delivery_name %></td>
+        <td class="align-middle"><%= order.customer.first_name + " " + order.customer.last_name %></td>
         <td class="align-middle"><%= order.order_details.sum(:buy_quantity) %></td>
         <td class="align-middle"><%= t("enums.order.status.#{order.status}") %></td>
         <td class="align-middle">
